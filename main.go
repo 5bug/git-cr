@@ -47,7 +47,7 @@ fi
 git pull origin ${TARGET_BRANCH}
 	`
 	args := []string{"-c", fmt.Sprintf(shell, branch)}
-	cmd := exec.Command("/bin/bash", args...)
+	cmd := exec.Command("/bin/sh", args...)
 	out, err := cmd.CombinedOutput()
 	if err != nil {
 		err = errors.Wrapf(err, "执行失败，错误信息如下：\n%s", string(out))
@@ -70,13 +70,15 @@ export SOURCE_BRANCH="cr/${USER_NAME}/${TARGET_BRANCH}"
 
 git push origin HEAD:${SOURCE_BRANCH} \
 -o merge_request.create \
--o merge_request.title=%s \
+-o merge_request.title="%s" \
 -o merge_request.target=${TARGET_BRANCH} \
 -o merge_request.source=${SOURCE_BRANCH} \
 -o merge_request.remove_source_branch=true
 	`
 	args := []string{"-c", fmt.Sprintf(shell, username, branch, fmt.Sprintf("%s merge code into %s", username, branch))}
-	cmd := exec.Command("/bin/bash", args...)
+
+	fmt.Println(fmt.Sprintf(shell, username, branch, fmt.Sprintf("%s merge code into %s", username, branch)))
+	cmd := exec.Command("/bin/sh", args...)
 	out, err := cmd.CombinedOutput()
 	if err != nil {
 		err = errors.Wrapf(err, "执行失败，错误信息如下：\n%s", string(out))
