@@ -76,8 +76,6 @@ git push origin HEAD:${SOURCE_BRANCH} \
 -o merge_request.remove_source_branch=true
 	`
 	args := []string{"-c", fmt.Sprintf(shell, username, branch, fmt.Sprintf("%s merge code into %s", username, branch))}
-
-	fmt.Println(fmt.Sprintf(shell, username, branch, fmt.Sprintf("%s merge code into %s", username, branch)))
 	cmd := exec.Command("/bin/sh", args...)
 	out, err := cmd.CombinedOutput()
 	if err != nil {
