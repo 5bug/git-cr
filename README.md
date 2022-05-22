@@ -13,6 +13,6 @@
 go install github.com/5bug/git-cr@latest
 
 ## 使用方法
-git add xxx
-git commit -m "feat: xxx"
+git add xxx   
+git commit -m "feat: xxx"  
 git cr
