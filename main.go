@@ -68,7 +68,7 @@ export USER_NAME="%s"
 export TARGET_BRANCH="%s"
 export SOURCE_BRANCH="cr/${USER_NAME}/${TARGET_BRANCH}"
 
-git push origin HEAD:${SOURCE_BRANCH}
+git push origin HEAD:${SOURCE_BRANCH} \
 -o merge_request.create \
 -o merge_request.title=%s \
 -o merge_request.target=${TARGET_BRANCH} \
